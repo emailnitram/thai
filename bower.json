@@ -1,0 +1,21 @@
+{
+  "name": "learntype",
+  "version": "1.0.0",
+  "homepage": "http://emailnitram.github.io/thai/",
+  "authors": [
+    "Martin Henry <emailnitram@gmail.com>"
+  ],
+  "description": "Practice learning the thai keyboard layout on a mobile device by typing most common thai words",
+  "main": "index.html",
+  "keywords": [
+    "thai"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
