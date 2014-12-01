@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="wordGame">
   <head>
+    <title>Thai Typing</title>
     <meta name="viewport" content="minimal-ui">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=10.0; user-scalable=1;" />
     <script src="bower_components/hammerjs/hammer.min.js"></script>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
     <style type="text/css" media="screen">
       .main {
-        padding: 10px;
+        padding: 0 10px;
       }
       .success {
         color: green;
@@ -55,6 +56,7 @@
         $scope.meaning = secretWords[currentSelection].meaning;
         $scope.transliteration = secretWords[currentSelection].transliteration;
         $scope.word = '';
+        document.getElementById("001").focus();
       });
 
       $scope.nextWord = function() {
@@ -63,8 +65,7 @@
         $scope.meaning = secretWords[currentSelection].meaning;
         $scope.transliteration = secretWords[currentSelection].transliteration;
         $scope.word = '';
-        document.getElementById("guessWord").focus();
-        $window.scrollTo(0,0);
+        document.getElementById("001").focus();
       };
     }]);
     </script>
@@ -74,15 +75,12 @@
       <div layout="row" layout-sm="column" layout-align="space-around" ng-show="secretWord === undefined">
         <md-progress-circular mode="indeterminate"></md-progress-circular>
       </div>
+      <form ng-submit="secretWord === word && nextWord();">
+        <md-text-float label="Word" ng-model="word"> </md-text-float>
       <h1 ng-class="{'success' : secretWord === word}">{{secretWord}}</h1>
       <h4>{{transliteration}}</h4>
       <p>{{meaning}}</p>
-      <hr>
-      <form ng-submit="secretWord === word && nextWord();">
-        <!-- <input id="guessWord" type="text" ng-model="word" placeholder="Go!" autofocus> -->
-        <md-text-float id="guessWord" label="Word" ng-model="word"> </md-text-float>
          <md-button class="md-raised" type="submit" name="next" ng-show="secretWord === word" layout="row">Next Word</md-button>
-        <!-- <button type="submit" name="next" ng-show="secretWord === word">Next Word</button> -->
       </form>
     </div>
   </body>
