@@ -56,6 +56,7 @@
         $scope.meaning = secretWords[currentSelection].meaning;
         $scope.transliteration = secretWords[currentSelection].transliteration;
         $scope.word = '';
+        $scope.loaded = true;
         document.getElementById("001").focus();
       });
 
@@ -72,7 +73,7 @@
   </head>
   <body>
     <div ng-controller="mainController" class="main" layout-sm="row" layout-align="center start">
-      <div layout="row" layout-sm="column" layout-align="space-around" ng-show="secretWord === undefined">
+      <div layout="row" layout-sm="column" layout-align="space-around" ng-hide="loaded">
         <md-progress-circular mode="indeterminate"></md-progress-circular>
       </div>
       <form ng-submit="secretWord === word && nextWord();">
@@ -80,7 +81,7 @@
       <h1 ng-class="{'success' : secretWord === word}">{{secretWord}}</h1>
       <h4>{{transliteration}}</h4>
       <p>{{meaning}}</p>
-         <md-button class="md-raised" type="submit" name="next" ng-show="secretWord === word" layout="row">Next Word</md-button>
+      <md-button class="md-raised" type="submit" name="next" ng-show="loaded && secretWord === word" layout="row">Next Word</md-button>
       </form>
     </div>
   </body>
